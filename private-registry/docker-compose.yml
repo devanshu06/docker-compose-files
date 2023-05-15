@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  private-registry:
+    image: registry:latest
+    restart: always
+    ports:
+      - 5000:5000
+    volumes:
+      - /home/tudip/code/Docker/private-registry/data:/data
+    environment:
+      - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/data
+      - REGISTRY_STORAGE_DELETE_ENABLED=true
+    

@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+    ports:
+      - "80:80"
+    logging:
+      driver: gelf
+      options:
+        gelf-address: "udp://172.23.76.199:12201"
+        tag: "nginx-app"

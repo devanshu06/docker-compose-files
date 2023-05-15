@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    deploy:
+      placement:
+        constraints: 
+          - 'node.labels.monitor == yes'
