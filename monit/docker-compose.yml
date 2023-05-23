@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+  monit:
+    image: dev:v1
+    ports:
+      - 2812:2812
+    volumes:
+      - ./monitrc:/etc/monit/monitrc
+      - ./monit.conf:/etc/monit/conf-enabled/monit.conf
+
+    
+#change the permission of the monitrc & monit.conf file on the host system to make the container up and running
+# sudo chmod 700 monitrc
+# sudo chown root:root monitrc

@@ -1,0 +1,26 @@
+version: '3.4'
+services:         
+  monit:
+    image: dev06/monit:v1    
+    ports:
+      - 2812:2812
+    #Depends On you If you want to put the Placement constraints
+    # deploy:
+    #   placement:
+    #     constraints:
+    #       - node.labels.nodeType != transcoder
+    #       - node.role != manager
+    configs:
+      - source: monit.conf
+        target: /etc/monit/cond-enabled/monit.conf
+      - source: monitrc
+        target: /etc/monit/monitrc
+        mode: 0700
+#Create the below configs in the DockerSwarm to make the stack up and running 
+configs:
+  monit.conf: 
+    external: 
+      name: monit.conf
+  monitrc:
+    external:
+      name: monitrc
